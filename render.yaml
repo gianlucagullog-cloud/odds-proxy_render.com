@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: odds-proxy
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn odds_proxy:app --bind 0.0.0.0:$PORT --workers 2 --timeout 30
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+    plan: free
